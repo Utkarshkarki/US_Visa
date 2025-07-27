@@ -2,14 +2,14 @@ import json
 import sys
 
 import pandas as pd
-from evidently.model_profile import Profile
-from evidently.model_profile.sections import DataDriftProfileSection
+import pandas as DataFrame
+#from evidently.model_profile import Profile
+#from evidently.model_profile.sections import DataDriftProfileSection
 
-from pandas import DataFrame
-import evidently
+
 import pandas as pd
-from evidently import Report
-from evidently  import DataDriftPreset
+from evidently.report import Report
+from evidently.metric_preset import DataDriftPreset
 
 # Quick test to ensure everything works
 print("Evidently is ready to use!")
@@ -96,19 +96,16 @@ class DataValidation:
         Output      :   Returns bool value based on validation results
         On Failure  :   Write an exception log and then raise an exception
         
-        Version     :   Updated for Evidently 0.7.11
+        Version     :   Updated for Evidently 0.4.30
         """
         try:
-            from evidently.report import Report
-            from evidently.metric_preset import DataDriftPreset
-            import json
-            import logging
+            
             
             # Create and run the drift report
             data_drift_profile = Report(metrics=[DataDriftPreset()])
             data_drift_profile.run(reference_data=reference_df, current_data=current_df)
             
-            # Get results as dictionary (correct method for 0.7.11)
+            # Get results as dictionary 
             report_dict = data_drift_profile.as_dict()
             
             # Convert to JSON string for file storage
@@ -120,7 +117,7 @@ class DataValidation:
                 content=json_report
             )
             
-            # Access drift metrics using correct structure for Evidently 0.7.11
+            # Access drift metrics using correct structure for Evidently 
             drift_metrics = report_dict['metrics'][0]['result']
             
             # Extract drift information
