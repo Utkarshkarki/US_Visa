@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()                 # looks for .env in the working dir[1]
 db_user = os.getenv("MONGODB_URL")
+aws_access_key = os.getenv("AWS_ACCESS_KEY_ID")
+aws_secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 DATABASE_NAME = "US_VISA"
 
@@ -22,8 +24,8 @@ TEST_FILE_NAME: str = "test.csv"
 FILE_NAME: str = "usvisa.csv"
 MODEL_FILE_NAME = "model.pkl"
 
-AWS_ACCESS_KEY_ID_ENV_KEY = "AWS_ACCESS_KEY_ID"
-AWS_SECRET_ACCESS_KEY_ENV_KEY = "AWS_SECRET_ACCESS_KEY"
+AWS_ACCESS_KEY_ID_ENV_KEY = aws_access_key
+AWS_SECRET_ACCESS_KEY_ENV_KEY = aws_secret_key 
 REGION_NAME = "us-east-1"
 
 TARGET_COLUMN = "case_status"
@@ -70,5 +72,5 @@ MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
 MODEL EVALUATION related constant 
 """
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
-MODEL_BUCKET_NAME = "usvisa-model2024"
+MODEL_BUCKET_NAME = "utkarsh-karki-usvisa-model"
 MODEL_PUSHER_S3_KEY = "model-registry"
