@@ -43,7 +43,7 @@ class SimpleStorageService:
         Version     :   1.2
         Revisions   :   moved setup to cloud
         """
-        logging.info("Entered the read_object method of S3Operations class")
+        logging.info("Entered the read_object method of S3 Operations class")
 
         try:
             func = (
