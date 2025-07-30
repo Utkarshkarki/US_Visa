@@ -40,3 +40,7 @@ class USvisaData:
             return df
         except Exception as e:
             raise USvisaException(e,sys)
+        '''A computer sees the string "na" as text and can't perform mathematical calculations on it. 
+        By converting it to np.nan, you are changing
+        it to the standard numerical representation of a missing value,
+         which data analysis and machine learning libraries understand and can handle correctly.'''

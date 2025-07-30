@@ -108,7 +108,7 @@ class TrainPipeline:
     def start_model_evaluation(self, data_ingestion_artifact: DataIngestionArtifact,
                                model_trainer_artifact: ModelTrainerArtifact) -> ModelEvaluationArtifact:
         """
-        This method of TrainPipeline class is responsible for starting modle evaluation
+        This method of Train Pipeline class is responsible for starting modle evaluation
         """
         try:
             model_evaluation = ModelEvaluation(model_eval_config=self.model_evaluation_config,
