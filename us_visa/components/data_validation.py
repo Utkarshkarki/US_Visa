@@ -59,7 +59,7 @@ class DataValidation:
         On Failure  :   Write an exception log and then raise an exception
         """
         try:
-            dataframe_columns = df.columns
+            dataframe_columns = df.columns.tolist()
             missing_numerical_columns = []
             missing_categorical_columns = []
             for column in self._schema_config["numerical_columns"]:
@@ -174,22 +174,18 @@ class DataValidation:
             if not status:
                 validation_error_msg += f"Columns are missing in training dataframe."
             status = self.validate_number_of_columns(dataframe=test_df)
-
             logging.info(f"All required columns present in testing dataframe: {status}")
             if not status:
                 validation_error_msg += f"Columns are missing in test dataframe."
 
             status = self.is_column_exist(df=train_df)
-
             if not status:
                 validation_error_msg += f"Columns are missing in training dataframe."
             status = self.is_column_exist(df=test_df)
-
             if not status:
                 validation_error_msg += f"columns are missing in test dataframe."
 
             validation_status = len(validation_error_msg) == 0
-
             if validation_status:
                 drift_status = self.detect_dataset_drift(train_df, test_df)
                 if drift_status:
