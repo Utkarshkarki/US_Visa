@@ -18,7 +18,7 @@ class TargetValueMapping:
         mapping_response = self._asdict()
         return dict(zip(mapping_response.values(),mapping_response.keys()))
     
-
+## think properly about this class, it is not a model, it is a wrapper around the model
 
 
 class USvisaModel:
