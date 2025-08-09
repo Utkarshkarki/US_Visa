@@ -77,8 +77,8 @@ class ModelTrainer:
 
 
             if best_model_detail.best_score < self.model_trainer_config.expected_accuracy:
-                logging.info("No best model found with score more than base score")
-                raise Exception("No best model found with score more than base score")
+                logging.info("No best model found with score more than base score")  
+                raise Exception("No best model found with score more than base score")  
 
             usvisa_model = USvisaModel(preprocessing_object=preprocessing_obj,
                                        trained_model_object=best_model_detail.best_model)
