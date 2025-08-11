@@ -53,21 +53,21 @@ class ModelEvaluation:
 
     def evaluate_model(self) -> EvaluateModelResponse:
         """
-        Method Name :   evaluate_model
-        Description :   This function is used to evaluate trained model 
-                        with production model and choose best model 
+        Method Name :   evaluate_model 
+        Description :   This function is used to evaluate trained model  
+                        with production model and choose best model  
         
-        Output      :   Returns bool value based on validation results
-        On Failure  :   Write an exception log and then raise an exception
-        """
+        Output      :   Returns bool value based on validation results 
+        On Failure  :   Write an exception log and then raise an exception 
+        """ 
         try:
-            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
-            test_df['company_age'] = CURRENT_YEAR-test_df['yr_of_estab']
+            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path) 
+            test_df['company_age'] = CURRENT_YEAR-test_df['yr_of_estab'] 
 
-            x, y = test_df.drop(TARGET_COLUMN, axis=1), test_df[TARGET_COLUMN]
-            y = y.replace(
-                TargetValueMapping()._asdict()
-            )
+            x, y = test_df.drop(TARGET_COLUMN, axis=1), test_df[TARGET_COLUMN] 
+            y = y.replace(  
+                TargetValueMapping()._asdict()  
+            )  
 
             # trained_model = load_object(file_path=self.model_trainer_artifact.trained_model_file_path)
             trained_model_f1_score = self.model_trainer_artifact.metric_artifact.f1_score
