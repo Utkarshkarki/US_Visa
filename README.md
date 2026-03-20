@@ -9,6 +9,31 @@ This project is an **End-to-End Machine Learning Web Application** designed to p
 
 This software is built following industry-standard **MLOps** principles. The architecture is modularly separated into distinct pipelines ensuring maintainability, scalability, and ease of deployment.
 
+### 🌳 Directory Graph
+```text
+ProjectClassify/
+├── artifact/              # Output hub (Model pickles, datasets, logs - gitignored)
+├── config/                # Environment configuration YAMLs
+├── Notebook/              # Jupyter experiments and drift analysis algorithms
+├── static/                # CSS and static browser assets
+├── templates/             # HTML front-end pages (usvisa.html)
+├── us_visa/               # Main source package
+│   ├── components/        # Core ML execution scripts (Ingestion -> Pusher)
+│   ├── configuration/     # Cloud and DB connection logic (AWS S3, MongoDB)
+│   ├── constants/         # Static global variables
+│   ├── data_access/       # Data loading and saving interfaces
+│   ├── entity/            # State dataclasses (Artifacts, Config outputs)
+│   ├── exception/         # Centralized custom exception handling
+│   ├── logger/            # Execution logging configurations
+│   ├── pipline/           # Aggregators for Training & Prediction pipelines
+│   └── utils/             # Reusable helper functions (file I/O, etc.)
+├── app.py                 # FastAPI Backend Web Server
+├── demo.py                # Pipeline execution script for retraining
+├── requirements.txt       # Python package dependencies
+├── setup.py               # Project packaging configuration
+└── Dockerfile             # Container instructions for isolated deployment
+```
+
 ### 1. Data Processing & Training Pipeline (`us_visa/components/`)
 The backbone of the project handles the complete lifecycle of standard Machine Learning operations:
 * **`data_ingestion.py`**: Handles downloading, extracting, and logically splitting the initial raw data into distinct train and test sets.
